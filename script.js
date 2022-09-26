@@ -34,3 +34,40 @@ function playRound(playerSelection, computerSelection) {
 		}
 	}
 }
+
+function game(numberOfRounds = 5) {
+	let playerScore = 0;
+	let computerScore = 0;
+	for (let i = 0; i < numberOfRounds; i++) {
+		let playerSelection = "";
+		do {
+			playerSelection = prompt(
+				"Choose your shape. Type 'rock', 'paper' or 'scissors'"
+			);
+		} while (!SHAPES.includes(playerSelection));
+
+		const result = playRound(playerSelection, getComputerChoice());
+		console.log(result);
+
+		if (result.includes("Win")) {
+			playerScore++;
+		} else if (result.includes("Lose")) {
+			computerScore++;
+		}
+	}
+	if (playerScore > computerScore) {
+		console.log(
+			`You won the game! Your score: ${playerScore}, computer score: ${computerScore}`
+		);
+	} else if (computerScore > playerScore) {
+		console.log(
+			`Computer won the game! Your score: ${playerScore}, computer score: ${computerScore}`
+		);
+	} else {
+		console.log(
+			`Tie! Your score: ${playerScore}, computer score: ${computerScore}`
+		);
+	}
+}
+
+game();
