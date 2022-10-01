@@ -35,26 +35,33 @@ function playRound(playerSelection, computerSelection) {
 	}
 }
 
-function game(numberOfRounds = 5) {
+const buttons = document.querySelectorAll("button");
+buttons.forEach((button) => {
+	button.addEventListener("click", (e) => {
+		alert(`clicked ${e.target.className}`);
+	});
+});
+
+function game(numberOfRounds = 1) {
 	let playerScore = 0;
 	let computerScore = 0;
-	for (let i = 0; i < numberOfRounds; i++) {
-		let playerSelection = "";
-		do {
-			playerSelection = prompt(
-				"Choose your shape. Type 'rock', 'paper' or 'scissors'"
-			);
-		} while (!SHAPES.includes(playerSelection));
+	// for (let i = 0; i < numberOfRounds; i++) {
+	// 	let playerSelection = "";
+	// 	do {
+	// 		playerSelection = prompt(
+	// 			"Choose your shape. Type 'rock', 'paper' or 'scissors'"
+	// 		);
+	// 	} while (!SHAPES.includes(playerSelection));
 
-		const result = playRound(playerSelection, getComputerChoice());
-		console.log(result);
+	// 	const result = playRound(playerSelection, getComputerChoice());
+	// 	console.log(result);
 
-		if (result.includes("Win")) {
-			playerScore++;
-		} else if (result.includes("Lose")) {
-			computerScore++;
-		}
-	}
+	// 	if (result.includes("Win")) {
+	// 		playerScore++;
+	// 	} else if (result.includes("Lose")) {
+	// 		computerScore++;
+	// 	}
+	// }
 	if (playerScore > computerScore) {
 		console.log(
 			`You won the game! Your score: ${playerScore}, computer score: ${computerScore}`
