@@ -1,4 +1,9 @@
 const SHAPES = ["rock", "paper", "scissors"];
+let playerScore = 0;
+let computerScore = 0;
+let gameEnded = false;
+const resultsDiv = document.querySelector("div.results");
+const scoreDiv = document.querySelector("div.score");
 
 function getComputerChoice() {
 	const randomIndex = Math.floor(Math.random() * 3);
@@ -35,46 +40,31 @@ function playRound(playerSelection, computerSelection) {
 	}
 }
 
-const buttons = document.querySelectorAll("button");
-buttons.forEach((button) => {
-	button.addEventListener("click", (e) => {
-		alert(`clicked ${e.target.className}`);
-	});
-});
+function updateScore(result) {
+	if (result.includes("Win")) {
+		playerScore++;
+	} else if (result.includes("Lose")) {
+		computerScore++;
+	}
+	scoreDiv.textContent = `Your score: ${playerScore}, Computer score: ${computerScore}`;
 
-function game(numberOfRounds = 1) {
-	let playerScore = 0;
-	let computerScore = 0;
-	// for (let i = 0; i < numberOfRounds; i++) {
-	// 	let playerSelection = "";
-	// 	do {
-	// 		playerSelection = prompt(
-	// 			"Choose your shape. Type 'rock', 'paper' or 'scissors'"
-	// 		);
-	// 	} while (!SHAPES.includes(playerSelection));
-
-	// 	const result = playRound(playerSelection, getComputerChoice());
-	// 	console.log(result);
-
-	// 	if (result.includes("Win")) {
-	// 		playerScore++;
-	// 	} else if (result.includes("Lose")) {
-	// 		computerScore++;
-	// 	}
-	// }
-	if (playerScore > computerScore) {
-		console.log(
-			`You won the game! Your score: ${playerScore}, computer score: ${computerScore}`
-		);
-	} else if (computerScore > playerScore) {
-		console.log(
-			`Computer won the game! Your score: ${playerScore}, computer score: ${computerScore}`
-		);
-	} else {
-		console.log(
-			`Tie! Your score: ${playerScore}, computer score: ${computerScore}`
-		);
+	if (playerScore == 5) {
+		gameEnded = true;
+		resultsDiv.textContent = `You won the game!`;
+	}
+	if (computerScore == 5) {
+		gameEnded = true;
+		resultsDiv.textContent = `Computer won the game!`;
 	}
 }
 
-game();
+const buttons = document.querySelectorAll("button");
+buttons.forEach((button) => {
+	button.addEventListener("click", (e) => {
+		if (!gameEnded) {
+			const result = playRound(e.target.className, getComputerChoice());
+			resultsDiv.textContent = result;
+			updateScore(result);
+		}
+	});
+});
