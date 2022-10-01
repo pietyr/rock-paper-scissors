@@ -11,8 +11,6 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
-	playerSelection = playerSelection.toLowerCase();
-
 	if (playerSelection == SHAPES[0]) {
 		if (computerSelection == SHAPES[0]) {
 			return `Tie!`;
@@ -60,11 +58,19 @@ function updateScore(result) {
 
 const buttons = document.querySelectorAll("button");
 buttons.forEach((button) => {
-	button.addEventListener("click", (e) => {
+	button.addEventListener("click", () => {
 		if (!gameEnded) {
-			const result = playRound(e.target.className, getComputerChoice());
+			const result = playRound(button.className, getComputerChoice());
 			resultsDiv.textContent = result;
 			updateScore(result);
 		}
 	});
+});
+
+document.querySelector("button.new-game").addEventListener("click", () => {
+	gameEnded = false;
+	playerScore = 0;
+	computerScore = 0;
+	resultsDiv.textContent = `Click one of the buttons to start a game`;
+	scoreDiv.textContent = `Your score: ${playerScore}, Computer score: ${computerScore}`;
 });

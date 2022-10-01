@@ -1,0 +1,118 @@
+:root {
+	box-sizing: border-box;
+	--black: #000814;
+	--dark-blue: #001d3d;
+	--blue: #003566;
+	--dark-yellow: #ffc300;
+	--yellow: #ffd60a;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	min-height: 100vh;
+	margin: 0;
+	font-family: "Kanit", sans-serif;
+	font-weight: 300;
+	background-color: var(--black);
+	color: var(--dark-yellow);
+}
+
+main {
+	background: var(--dark-blue);
+	margin: 4rem auto;
+	border: 1px solid var(--yellow);
+	border-radius: 1rem;
+	padding: 2rem 4rem;
+	-webkit-box-shadow: inset 8px 8px 30px 3px var(--black);
+	-moz-box-shadow: inset 8px 8px 30px 3px var(--black);
+	box-shadow: inset 8px 8px 30px 3px var(--black);
+	min-height: 80vh;
+}
+
+h1 {
+	font-size: 4rem;
+	letter-spacing: 0.15em;
+	font-weight: 700;
+	text-align: center;
+	text-shadow: 4px 4px 6px var(--black);
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
+article.buttons {
+	display: flex;
+	justify-content: space-around;
+}
+
+button {
+	font-family: inherit;
+	font-size: 100%;
+	line-height: 1.15;
+	margin: 0;
+	overflow: visible;
+	text-transform: none;
+	-webkit-appearance: button;
+	background-color: var(--black);
+	display: block;
+	border: 5px solid var(--dark-yellow);
+	border-radius: 1rem;
+
+	color: var(--dark-yellow);
+	cursor: pointer;
+	transition: 0.2s;
+	padding: 2rem;
+	margin: 2rem;
+	-webkit-box-shadow: 8px 8px 30px 3px rgba(0, 8, 20, 1);
+	-moz-box-shadow: 8px 8px 30px 3px rgba(0, 8, 20, 1);
+	box-shadow: 8px 8px 30px 3px rgba(0, 8, 20, 1);
+}
+
+.buttons button {
+	width: 15rem;
+	height: 18rem;
+}
+
+path {
+	fill: currentColor;
+}
+
+button:hover {
+	color: var(--blue);
+	background-color: var(--yellow);
+	border: 5px solid var(--black);
+}
+
+article.results {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 2rem;
+	text-align: center;
+	font-size: 1.5rem;
+}
+
+button.new-game {
+	font-size: 2rem;
+	font-weight: 700;
+	width: 50%;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+}
+
+footer {
+	margin-bottom: 0.5rem;
+}
+
+footer a {
+	color: var(--yellow);
+	font-weight: 400;
+}
